@@ -227,3 +227,214 @@ function getNumber(data) {
   };
 }
 console.log (getNumber(data));
+
+//6.6 Функция возвращает процент числа value от значения total
+function getPersent () {
+  result = (value*100)/total
+  return result;
+}
+console.log (getPersent (value, total));
+
+//9.1 Добавление, удаление элементов массива
+list.unshift('Яблоко');
+list.pop();
+list.push('Клубника');
+console.log (list);
+
+//9.2 Вывести в консоль самый длинный элемент из массива
+function getMaxLength (arr = []) {
+  let result;
+  for (let index = (arr.length - 1); index > 0; index--){
+      if (arr[index].length > arr[index-1].length) {
+          result = arr[index];}
+      else if (arr[index].length == arr[index-1].length) {
+          result = arr[index-1];
+      }
+  }
+  return result;
+}
+console.log (getMaxLength(list));
+
+//9.3 Посчитать сумму чисел в массиве
+function sumArray (arr=[]) {
+  let sum = 0;
+  for (let index = 0; index < arr.length; index++){
+      sum+=arr[index];
+  }
+  return sum
+}
+console.log (sumArray(list))
+
+//9.4 Объединить два числовых массива в один и каждое значение возвести в квадрат
+function mergeArray (arr1 = [], arr2 = []) {
+  let result = [];
+  for (let i of arr1) {
+      result.push (i);
+  }
+  for (i of arr2) {
+      result.push (i);
+  }
+  return result;
+}
+function squareArray (arr) {
+  let result = [];
+  for (i of arr) {
+      i**=2;
+      result.push(i);
+  }
+  return result;
+}
+console.log (squareArray(mergeArray(list_1, list_2)))
+
+//9.5 Посчитать сумму положительных чисел и вывести результат в консоль
+function sumPositive (arr = []) {
+  let sum = 0;
+  for (let i of arr) {
+      if (i > 0) {
+          sum+= i;
+      }
+  }
+  return sum
+}
+console.log (sumPositive(list));
+
+//9.6 Сформировать сумму из простых чисел диапазона и вывести результат в консоль
+function sumSimpleNumbers (arr) {
+  let sum = 0;
+  for (let i of arr) {
+      if ( i!= 1 && (i%2 != 0 || i==2) && (i%3 != 0 || i==3) && (i%5 != 0 || i==5) && (i%7 != 0 || i==7) ) {
+          sum += i;
+      }
+  }
+  return sum;
+}
+console.log (sumSimpleNumbers(list));
+
+//9.7 Рассчитать произведение максимального и минимального элементов массива и вывести в консоль
+function minArray (arr) {
+  let result = arr[0];
+  for (let i=0; i < arr.length; i++) {
+      if (result>arr[i]) {
+      result = arr[i];
+      }
+  }
+  return result;
+}
+function maxArray (arr) {
+  let result= arr[0];
+  for (let i=0; i < arr.length; i++) {
+      if (result<arr[i]) {
+      result = arr[i];
+      }
+  }
+  return result;
+}
+console.log (minArray(list)*maxArray(list));
+
+//9.8 Перевернуть числовой массив и вывести результат в консоль
+let result = [];
+for (let i of list) {
+    result.unshift (i);
+}
+console.log (result);
+
+//9.9 Преобразовать строку в массив так, чтобы каждое слово было отдельным элементом массива
+function transform (string = '') {
+  let result = [];
+  let word = '';
+  for (let i = 0; i < string.length; i++ ) {
+      if (string.charAt(i) != ' ') {
+          word += string.charAt(i);
+      } else {
+          result.push (word);
+          word = '';
+      }
+  }
+  if (word != '') result.push (word);
+  return result;
+}
+console.log (transform(sentence));
+
+//9.10 Функция, которая возвращает количество четных элементов в массиве
+function count(list) {
+  let result = 0;
+  for (let i of list) {
+      if (i%2 == 0) result++;
+  }
+  return result;
+}
+console.log (count(list))
+
+//9.11 Функция рассчитывает среднее значение элементов массива и округляет получившееся значение по правилам математики
+function average(list) {
+  let sum = 0;
+  let result = 0;
+  for (let i of list) {
+      sum+= i;
+  }
+  result = Math.round(sum / list.length);
+
+  return result;
+}
+console.log (average(list));
+
+//9.12 Рассчитать сумму числовых значений, до первого логического
+let sum = 0;
+for (let i of list) {
+    if (typeof i != 'boolean') {
+        sum+= i;
+    } else break; 
+}
+console.log (sum);
+
+//9.13 Сформировать массив со значениями от 10 до 20
+let list = [];
+for (let i=10; i<=20; i++) {
+    list.push(i);
+}
+console.log (list);
+
+//9.14 Cформируйте массив, который содержит в себе только числа до false
+let numbers_list = [];
+for (let i of list) {
+    if (typeof i == 'number') {
+        numbers_list.push (i);
+    } else if (i == false) break;
+}
+console.log (numbers_list);
+
+//9.15 Посчитать количество элементов без учета элементов со значением "default"
+let result = 0;
+for (let i of list) {
+    if (i.toLowerCase() != 'default') result++;
+}
+console.log (result);
+
+//9.16 Сформировать строку из первых букв каждого элемента массива
+let result = '';
+for (let i of list) {
+    result+= i.charAt(0);
+}
+console.log (result);
+
+// 9.17 Сформировать новый объект со значениями и их количеством
+let result = {};
+for (let k in obj) {
+  if (result[obj[k]]) {
+      result[obj[k]]++
+  } else {
+      result[obj[k]] = 1;
+  }
+}
+console.log (result);
+
+//9.18 Вывести продукт с максимальной ценой
+let maxPrice = 0;
+let product = '';
+for (let i=0; i < list.length; i++) {
+    if (maxPrice < list[i].price) {
+        maxPrice = list[i].price;
+        product = list[i].product;
+    }
+}
+console.log (product);
